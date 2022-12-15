@@ -1,9 +1,9 @@
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
-import React, { useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { getDocs, query, collection, where } from 'firebase/firestore';
 import { db } from '../firebase';
 
-export default function Prestation({route, navigation }) {
+export default function Prestation({ route, navigation }) {
 
     const [listDocteurs, setListDocteurs] = useState(Array)
 
@@ -20,17 +20,26 @@ export default function Prestation({route, navigation }) {
                 listeBis.push(r.data());
             })
             setListDocteurs(listeBis)
-            console.log(listDocteurs)
         }).catch((err) => {
             console.log(err)
         })
     }, [])
 
+    const rendezVous = () => {
+        navigation.navigate('RendezVous', { idUser: params})
+    }
+
     return (
         <View style={styles.container}>
-           {listDocteurs.map(elem => {
-            <Text>elem.nom</Text>
-           })}
+            {listDocteurs.map(elem => {
+                return (
+                    <View>
+                        <Text>{elem.nom}</Text>
+                        <Text>{elem.adresse}</Text>
+                    </View>
+                )
+            })}
+            <Button onPress={rendezVous} title="Mes rendez-vous" color="#841584"  />
         </View>
     );
 }

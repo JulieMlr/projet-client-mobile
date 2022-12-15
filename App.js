@@ -7,6 +7,7 @@ import Inscription from './src/components/Inscription';
 import { StyleSheet, TextInput, Button } from 'react-native';
 import Home from './src/components/Home';
 import Prestation from './src/components/Prestation';
+import RendezVous from './src/components/RendezVous';
 
 
 const Stack = createNativeStackNavigator();
@@ -26,6 +27,8 @@ function App() {
         />
         <Stack.Screen name="Inscription" component={Inscription}/>
         <Stack.Screen name="Prestation" component={Prestation} />
+        <Stack.Screen name="RendezVous" component={RendezVous} />
+
       </Stack.Navigator>
     </NavigationContainer>
   );
